@@ -1,4 +1,5 @@
 #include "skipList.hpp"
+#include "cellule.hpp"
 #include <iostream>
 #include <vector>
 
@@ -19,7 +20,7 @@ void SkipList::afficher() {
   Cellule *c = bidon;
   for(int i=0; i<0; i++) {
     for(int j=c->tab.size(); j>0; j--) {
-      if(c->tab[i]->val != nullptr) {
+      if(c->tab[i] != nullptr) {
         std::cout << "c->tab[" << j << "]->val = " << c->tab[j]->val << std::endl;
       }
     }
@@ -32,26 +33,23 @@ void SkipList::afficher() {
 }
 
 void SkipList::inserer(int valeur) {
-  vector<*Cellule> update;
+  std::vector<Cellule *> update;
   Cellule *nouvelle = new Cellule;
   nouvelle->val = valeur;
   //determine hauteur with pile ou face
+
   Cellule *c = bidon;
-  for(int i=bidon->tab.size()-1; i>0; i--) {
-    if(c->tab[i]->val != nullptr && c->tab[i]->val <= valeur) {
-       update->push_back(c->tab[i]);
-       c = c->tab[i];
-    }
-  }
-  
+  // for(int i=bidon->tab.size()-1; i>0; i--) {
+  //   if(c->tab[i]->val != nullptr && c->tab[i]->val <= valeur) {
+  //      update->push_back(c->tab[i]);
+  //      c = c->tab[i];
+  //   }
+  // }
   
   for(int i=bidon->tab.size()-1; i>0; i--) {
     while((c->tab[i] != nullptr) && (c->tab[i]->val <= valeur)) c = c->tab[i];
     update[i] = c;
   }
-  
-  
-  
 }
 
 bool SkipList::search(int valeur) {
