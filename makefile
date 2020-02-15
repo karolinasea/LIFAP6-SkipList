@@ -1,10 +1,18 @@
-CPP_SRC = cellule.cpp skipList.cpp testSkipList.cpp 
+OPTIONS=-g -Wall -std=c++11 -pedantic
 
-CXX=g++
-CFLAGS=-g -O0 -Wall -Wextra 
+all: testSkipList
 
-sl: $(CPP_SRC) $(wildcard *.hpp) $(wildcard *.tpp)
-	$(CXX) $(CPP_SRC) $(CFLAGS) -o $@
+cellule.o: cellule.cpp
+	g++ $(OPTIONS) -c cellule.cpp -o cellule.o
+
+skipList.o: skipList.cpp
+	g++ $(OPTIONS) -c skipList.cpp -o skipList.o
+
+testSkipList.o: testSkipList.cpp
+	g++ $(OPTIONS) -c testSkipList.cpp -o testSkipList.o
+
+testSkipList: testSkipList.o cellule.o skipList.o
+	g++ $(OPTIONS) testSkipList.o cellule.o skipList.o -o sl
 
 clean:
-	-$(RM) *.o sl
+	rm -f *.o sl
