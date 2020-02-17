@@ -160,7 +160,7 @@ void SkipList::inserer(int valeur) {
   				//else {
   			// 	std::cout << "update[i]->tab[j]->val = " << update[i]->tab[j]->val << std::endl;
   			// }
-  			else if(update[i]->tab[j]->val <= nouvelle->val || j == 0 || nouvelle->tab.size() >= update[i]->tab.size()) {
+  			else if(update[i]->tab[j]->val > nouvelle->val || j == 0 || nouvelle->tab.size() >= update[i]->tab.size()) {
 	  			nouvelle->tab[j] = update[i]->tab[j];
 		  		update[i]->tab[j] = nouvelle;
 		  		std::cout << "hello 11.11" << std::endl;

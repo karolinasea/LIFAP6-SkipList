@@ -16,7 +16,7 @@ int main() {
 	s.inserer(7);
 	s.inserer(4);
 	// s.afficher();
-	// s.inserer(88);
+	s.inserer(88);
 	// s.afficher();
 	// s.inserer(5);
 	// s.inserer(8);
